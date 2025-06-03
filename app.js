@@ -36,6 +36,10 @@ app.get('/us-flights', (req, res) => {
   res.render('travel', { title: 'Travel' });
 });
 
+app.get('/us-cruise-deals', (req, res) => {
+  res.render('us-cruise-deals', { title: 'Cruise Deals' });
+});
+
 app.get('/disclaimer', (req, res) => {
   res.render('disclaimer', { title: 'Disclaimer' });
 });

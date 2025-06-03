@@ -1,227 +1,6 @@
-<!-- 
-
-
-
-
-
-
-<div class="tab-pane in active" id="tab1default">
-    <h4 class="easy_srch"> Flights </h4>
-    <div class="form_bx">
-        <form method="GET" action="https://airfareandtravel.com/book"
-            onsubmit="return first_form()">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="flight_type">
-                        <div class="form-check-inline">
-                            <label class="radio-inline customradio">Round Trip
-                                <input type="radio" checked="checked"
-                                    onClick="show_date(this.value)" value="roundtrip"
-                                    name="tripType">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="radio-inline customradio">One Way
-                                <input type="radio" onClick="show_date(this.value)" value="oneway"
-                                    name="tripType">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row fm_ln1">
-                <div class="rsts ffrms_ppd">
-                    <div class="res_hh"> From </div>
-                    <div class="form-group dst_date">
-                        <label class="frm_llbs"> <img src="Searchform/images/se_dep_icon.svg">
-                        </label>
-                        <input type="text" required="required"
-                            class="form-control ipt1 location-fld serlocation fromshort"
-                            autocomplete="off" placeholder="City or airport" name="origin1"
-                            id="location" onclick="clearInput2()">
-                        <p class="fromfull"> City Name </p>
-                    </div>
-                </div>
-                <div class="rsts ffrms_ppd">
-                    <div class="res_hh"> To </div>
-                    <div class="form-group dst_date">
-                        <label class="frm_llbs"> <img src="Searchform/images/se_arrival_icon.svg">
-                        </label>
-                        <input required="required" type="text"
-                            class="form-control ipt1 location-fld serlocation toshort"
-                            placeholder="City or airport" name="destination1" autocomplete="off"
-                            id="location2" onclick="clearInput()">
-                        <p class="tofull"> City Name </p>
-                    </div>
-                </div>
-                <div class="detyr_dy ffrms_ppd">
-                    <div class="mnbd_rres">
-                        <div class="res_hh"> Departure Date </div>
-                        <div class="form-group dst_date">
-                            <label class="frm_llbs"> <img
-                                    src="Searchform/images/se_calender_icon.svg"
-                                    style="width: 20px;"> </label>
-                            <input id="depDt" name="departDate1" type="hidden" value=''>
-                            <input type="text" class="form-control ipt1 readtrue" id="datepicker"
-                                required="required" autocomplete="off" placeholder="Depart"
-                                name="departDate1" readonly="true" value=''>
-                            <p id='datepicker_label'> Select Day </p>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    .readtrue {
-                        cursor: pointer !important;
-                        background-color: #fff !important;
-                        opacity: 1;
-                    }
-
-                    .form-control[disabled] {
-                        background: #a9a9a9 !important;
-                        opacity: 0.4;
-                    }
-                </style>
-                <div class="detyr_dy ffrms_ppd">
-                    <div class="mnbd_rres">
-                        <div class="res_hh"> Return Date </div>
-                        <div class="form-group dst_date">
-                            <label class="frm_llbs"> <img
-                                    src="Searchform/images/se_calender_icon.svg"
-                                    style="width: 20px;"> </label>
-                            <input id="retDt" name="returnDate1" type="hidden" value=''>
-                            <input type="text" autocomplete="off" class="form-control ipt1 readtrue"
-                                required="required" id="datepicker2" placeholder="Return"
-                                name="returnDate1" readonly="true" value=''>
-                            <p id='datepicker2_label'> Select Day </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="all_pmssngr ffrms_ppd">
-                    <div class="hdfggf">
-                        <div class="res_hh"> TRAVELLERS & CLASS </div>
-                        <div class="form-group dst_date">
-                            <label class="frm_llbs"> <img src="Searchform/images/se_psng_icon.svg"
-                                    style="width: 20px;"> </label>
-                            <input type="text" class="form-control ipt1 readtrue"
-                                placeholder="Passengers 1" name="" id="btm_clk" readonly="true">
-                            <div class="psg_dls" style="display: none;">
-                                <div class="row">
-                                    <div class="col-sm-5 col-4">
-                                        <div class="pass_bx">
-                                            <label>Adults <small>(+17 yrs)</small></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 col-8">
-                                        <div class="pass_bx">
-                                            <div class="input-group number-spinner">
-                                                <span class="input-group-btn">
-                                                    <a class="btn mns_btn" data-dir="dwn"
-                                                        onclick="decrease_adult_rt()"><i
-                                                            class="fa fa-minus"></i></a>
-                                                </span>
-                                                <input type="text" id="AdultsRT"
-                                                    class="form-control text-center add_num"
-                                                    name="adults" value="1">
-                                                <span class="input-group-btn">
-                                                    <a class="btn add_btn" data-dir="up"
-                                                        onclick="increase_adult_rt()"><i
-                                                            class="fa fa-plus"></i></a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-5 col-4">
-                                        <div class="pass_bx">
-                                            <label>Child <small>(0-17 yrs)</small></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 col-8">
-                                        <div class="pass_bx">
-                                            <div class="input-group number-spinner">
-                                                <span class="input-group-btn">
-                                                    <a class="btn mns_btn" data-dir="dwn"
-                                                        onclick="decrease_child_rt()"><i
-                                                            class="fa fa-minus"></i></a>
-                                                </span>
-                                                <input type="text" id="ChildrenRT"
-                                                    class="form-control text-center add_num"
-                                                    name="childs" value="0">
-                                                <span class="input-group-btn">
-                                                    <a class="btn add_btn" data-dir="up"
-                                                        onclick="increase_child_rt()"><i
-                                                            class="fa fa-plus"></i></a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-5 col-4">
-                                        <div class="pass_bx">
-                                            <label> Infant <small>(Upto 2 yrs)</small></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 col-8">
-                                        <div class="pass_bx">
-                                            <div class="input-group number-spinner">
-                                                <span class="input-group-btn">
-                                                    <a class="btn mns_btn" data-dir="dwn"
-                                                        onclick="decrease_infant_rt()"><i
-                                                            class="fa fa-minus"></i></a>
-                                                </span>
-                                                <input type="text"
-                                                    class="form-control text-center add_num"
-                                                    id="InfantsRT" name="infants" value="0">
-                                                <span class="input-group-btn">
-                                                    <a class="btn add_btn" data-dir="up"
-                                                        onclick="increase_infant_rt()"><i
-                                                            class="fa fa-plus"></i></a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bncfr_ccrty">
-                                    <div class="col-md-12 col-xs-12 ffrms_ppd">
-                                        <div class="form-group" style="margin: 0;">
-                                            <select class="form-control Nhgsdrt" id="classType"
-                                                name="classType" placeholder="Economy">
-                                                <option selected="selected" value="Y">Economy
-                                                </option>
-                                                <option value="S"> Premium Economy </option>
-                                                <option value="C"> Business Class </option>
-                                                <option value="F"> First Class </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-xs-6">
-                                    <div class="btn_dn">
-                                        <button type="button" onclick="all_pesenger();"
-                                            class="btn_done">Done</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="Dprd_sde ffrms_ppd" style="text-align:center;">
-                    <button type="sumit" name="submitForm"> <i class="fa fa-search"></i> </button>
-                </div>
-            </div>
-       
-        </form>
-    </div>
-</div> -->
-
-
-
- <div class="flight-form-container">
+<div class="flight-form-container">
         <div class="form-content">
-            <form method="GET" action="https://airfareandtravel.com/book" onsubmit="return first_form()">
+            <form method="GET" action="https://airlineticketsdeals.com/book" onsubmit="return first_form()">
                 <!-- Trip Type Selection -->
                 <div class="trip-type">
                     <div class="radio-container">
@@ -286,7 +65,7 @@
                                        class="form-input" 
                                        id="datepicker"
                                        name="departDate1"
-                                       placeholder="Select departure date"
+                                       placeholder="Select"
                                        required
                                        readonly
                                        autocomplete="off">
@@ -303,7 +82,7 @@
                                        class="form-input" 
                                        id="datepicker2"
                                        name="returnDate1"
-                                       placeholder="Select return date"
+                                       placeholder="Select"
                                        required
                                        readonly
                                        autocomplete="off">
@@ -311,97 +90,145 @@
                         </div>
                     </div>
 
+<!-- Travelers & Class -->
+<div class="form-group travelers-section">
+  <label class="form-label">Travellers & Class</label>
+  <div class="input-container">
+    <i class="fas fa-user-friends input-icon"></i>
+    <input type="text" 
+           class="form-input travelers-input" 
+           id="btm_clk"
+           placeholder="1 Passenger, Economy"
+           readonly 
+           onclick="document.getElementById('travelers-dropdown').style.display='block';"
+           style="cursor:pointer;">
+
+    <div class="travelers-dropdown" 
+         id="travelers-dropdown" 
+         style="display: none; border: 1px solid #ccc; padding: 15px; background: #fff; position: absolute; z-index: 999; width: 280px;">
+      
+      <!-- Class Selection -->
+      <select class="class-select" id="classType" name="classType" style="margin-bottom: 15px; width: 100%; padding: 5px;">
+        <option value="Economy" selected>Economy</option>
+        <option value="Premium Economy">Premium Economy</option>
+        <option value="Business Class">Business Class</option>
+        <option value="First Class">First Class</option>
+      </select>
+
+      <!-- Adults -->
+      <div class="form-group" style="margin-bottom: 15px; justify-items: center;">
+        <div>
+          <h5 style="margin: 0;">Adults</h5>
+          <span style="font-size: 12px; color: gray;">17+ years</span>
+        </div>
+        <div class="input-group passengers-group" style="margin-top: 5px;">
+          <button type="button" style="width: 25px; height: 25px;" onclick="changeCount('adults', -1)">−</button>
+          <input type="text" id="adults" name="adults" value="1" readonly style="width: 40px; text-align: center; margin: 0 12px;">
+          <button type="button" style="width: 25px; height: 25px;" onclick="changeCount('adults', 1)">+</button>
+        </div>
+      </div>
+
+      <!-- Children -->
+      <div class="form-group" style="margin-bottom: 15px; justify-items: center;">
+        <div>
+          <h5 style="margin: 0;">Children</h5>
+          <span style="font-size: 12px; color: gray;">0–17 years</span>
+        </div>
+        <div class="input-group passengers-group" style="margin-top: 5px;">
+          <button type="button" style="width: 25px; height: 25px;" onclick="changeCount('children', -1)">−</button>
+          <input type="text" id="children" name="children" value="0" readonly style="width: 40px; text-align: center; margin: 0 12px;">
+          <button type="button" style="width: 25px; height: 25px;" onclick="changeCount('children', 1)">+</button>
+        </div>
+      </div>
+
+      <!-- Infants -->
+      <div class="form-group" style="margin-bottom: 15px;  justify-items: center;">
+        <div>
+          <h5 style="margin: 0;">Infants</h5>
+          <span style="font-size: 12px; color: gray;">Up to 2 years</span>
+        </div>
+        <div class="input-group passengers-group" style="margin-top: 5px;">
+          <button type="button" style="width: 25px; height: 25px;" onclick="changeCount('infants', -1)">−</button>
+          <input type="text" id="infants" name="infants" value="0" readonly style="width: 40px; text-align: center; margin: 0 12px;">
+          <button type="button" style="width: 25px; height: 25px;" onclick="changeCount('infants', 1)">+</button>
+        </div>
+      </div>
+
+      <!-- Done Button -->
+      <button type="button" 
+              id="travellersDoneBtn" 
+              class="done-btn" 
+              onclick="updateTravellerSummary()"
+              style="margin-top: 10px; padding: 6px 12px; background: #007bff; color: white; border: none; cursor: pointer; border-radius: 4px;">
+        Done
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- JS SCRIPT -->
+<script>
+  function changeCount(type, delta) {
+    const input = document.getElementById(type);
+    let value = parseInt(input.value);
+    value = isNaN(value) ? 0 : value + delta;
+    if (value < 0) value = 0;
+    if (type === 'adults' && value === 0) value = 1; // Always have at least 1 adult
+    input.value = value;
+  }
+
+  function updateTravellerSummary() {
+    const adults = parseInt(document.getElementById("adults").value) || 0;
+    const children = parseInt(document.getElementById("children").value) || 0;
+    const infants = parseInt(document.getElementById("infants").value) || 0;
+    const total = adults + children + infants;
+
+    const classType = document.getElementById("classType").value;
+    const passengerText = `${total} Passenger${total > 1 ? 's' : ''}, ${classType}`;
+    document.getElementById("btm_clk").value = passengerText;
+
+    document.getElementById("travelers-dropdown").style.display = "none";
+  }
+</script>
 
 
-                    
-                        <!-- Travelers & Class -->
-                        <div class="form-group travelers-section">
-                            <label class="form-label">Travellers & Class</label>
-                            <div class="input-container">
-                                <i class="fas fa-user-friends input-icon"></i>
-                                <input type="text" 
-                                       class="form-input travelers-input" 
-                                       id="btm_clk"
-                                       placeholder="1 Passenger, Economy"
-                                       readonly>
-                            
-                            <div class="travelers-dropdown" id="travelers-dropdown">
-                                <!-- Class Selection - Moved to top -->
-                                <select class="class-select" id="classType" name="classType">
-                                    <option value="Y" selected>Economy</option>
-                                    <option value="S">Premium Economy</option>
-                                    <option value="C">Business Class</option>
-                                    <option value="F">First Class</option>
-                                </select>
 
-                                <!-- Adults -->
-                                <div class="passenger-row">
-                                    <div class="passenger-info">
-                                        <h5>Adults</h5>
-                                        <span>17+ years</span>
-                                    </div>
-                                    <div class="counter-controls">
-                                        <button type="button" class="counter-btn" onclick="decrease_adult_rt()">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="counter-value" id="AdultsRT">1</span>
-                                        <button type="button" class="counter-btn" onclick="increase_adult_rt()">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                        <input type="hidden" name="adults" id="adults-hidden" value="1">
-                                    </div>
-                                </div>
 
-                                <!-- Children -->
-                                <div class="passenger-row">
-                                    <div class="passenger-info">
-                                        <h5>Children</h5>
-                                        <span>0-17 years</span>
-                                    </div>
-                                    <div class="counter-controls">
-                                        <button type="button" class="counter-btn" onclick="decrease_child_rt()">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="counter-value" id="ChildrenRT">0</span>
-                                        <button type="button" class="counter-btn" onclick="increase_child_rt()">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                        <input type="hidden" name="childs" id="children-hidden" value="0">
-                                    </div>
-                                </div>
 
-                                <!-- Infants -->
-                                <div class="passenger-row">
-                                    <div class="passenger-info">
-                                        <h5>Infants</h5>
-                                        <span>Up to 2 years</span>
-                                    </div>
-                                    <div class="counter-controls">
-                                        <button type="button" class="counter-btn" onclick="decrease_infant_rt()">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <span class="counter-value" id="InfantsRT">0</span>
-                                        <button type="button" class="counter-btn" onclick="increase_infant_rt()">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                        <input type="hidden" name="infants" id="infants-hidden" value="0">
-                                    </div>
-                                </div>
-
-                                <button type="button" class="done-btn" onclick="all_pesenger()">Done</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Search Button -->
-                <button type="submit" name="submitForm" class="search-btn">
-                    <i class="fas fa-search"></i>
-                    Search Flights
-                </button>
+              <button type="submit" class="btn btn-primary btn-block">
+  <i class="fa fa-plane-departure"></i> Search Flight
+</button>
             </form>
         </div>
     </div>
+
+
+
+    <script>
+
+
+
+
+  // Increment/Decrement logic
+  function setupIncDec(idMinus, idInput, idPlus, min, max) {
+    document.getElementById(idMinus).onclick = function() {
+      let input = document.getElementById(idInput);
+      let val = parseInt(input.value, 10);
+      if (val > min) input.value = val - 1;
+    };
+    document.getElementById(idPlus).onclick = function() {
+      let input = document.getElementById(idInput);
+      let val = parseInt(input.value, 10);
+      if (val < max) input.value = val + 1;
+    };
+  }
+  setupIncDec('adult-minus', 'adults', 'adult-plus', 1, 9);
+  setupIncDec('child-minus', 'children', 'child-plus', 0, 9);
+  setupIncDec('infant-minus', 'infants', 'infant-plus', 0, 9);
+</script>
 
     <script>
         // Trip type functionality
@@ -429,6 +256,7 @@
         document.getElementById('btm_clk').addEventListener('click', function() {
             const dropdown = document.getElementById('travelers-dropdown');
             dropdown.classList.toggle('active');
+
         });
 
         // Close dropdown when clicking outside
@@ -437,7 +265,10 @@
             const input = document.getElementById('btm_clk');
             if (!dropdown.contains(event.target) && event.target !== input) {
                 dropdown.classList.remove('active');
+
             }
+
+            
         });
 
         // Counter functions - Fixed to prevent event bubbling
@@ -538,9 +369,32 @@
         }
 
         function all_pesenger() {
-            updateTravelersDisplay();
-            document.getElementById('travelers-dropdown').classList.remove('active');
-        }
+
+
+            //   const input = document.getElementById('btm_clk');
+            // if (!dropdown.contains(event.target) && event.target !== input) {
+            //     dropdown.classList.remove('active');
+
+            // }
+          
+            //   document.getElementById('travellersDropdown').style.display = 'none';
+
+            // document.getElementById('travelers-dropdown').classList.remove('active');
+
+            //     document.querySelector('.travellers-dropdown').classList.remove('show');
+
+                  
+ 
+            // document.getElementById('travelers-dropdown').style.display = 'none';
+
+               document.getElementById('btm_clk').style.display = 'none';
+//  updateTravelersDisplay();
+                // document.querySelector('travellersDropdown').classList.remove('show');
+
+            
+
+            
+    }
 
         // Class change handler
         document.getElementById('classType').addEventListener('change', updateTravelersDisplay);
@@ -581,27 +435,51 @@
         }
 
         // Initialize date pickers with Flatpickr - Limited to current month only
-        function initializeDatePickers() {
-            const { firstDay, lastDay } = getCurrentMonthRange();
+        // function initializeDatePickers() {
+        //     const { firstDay, lastDay } = getCurrentMonthRange();
             
-            const departureDate = flatpickr("#datepicker", {
-                dateFormat: "Y-m-d",
-                minDate: firstDay,
-                maxDate: lastDay,
-                onChange: function(selectedDates, dateStr, instance) {
-                    document.getElementById('depDt').value = dateStr;
-                    // Set minimum return date to departure date
-                    if (window.returnDatePicker) {
-                        window.returnDatePicker.set('minDate', dateStr);
-                    }
-                }
-            });
+        //     const departureDate = flatpickr("#datepicker", {
+        //         dateFormat: "Y-m-d",
+        //         minDate: firstDay,
+        //         maxDate: lastDay,
+        //         onChange: function(selectedDates, dateStr, instance) {
+        //             document.getElementById('depDt').value = dateStr;
+        //             // Set minimum return date to departure date
+        //             if (window.returnDatePicker) {
+        //                 window.returnDatePicker.set('minDate', dateStr);
+        //             }
+        //         }
+        //     });
 
-            initializeReturnDatePicker();
+        //     initializeReturnDatePicker();
 
-            // Store references for later use
-            window.departureDatePicker = departureDate;
+        //     // Store references for later use
+        //     window.departureDatePicker = departureDate;
+        // }
+
+
+
+        function initializeDatePickers() {
+    const { firstDay } = getCurrentMonthRange();
+
+    const departureDate = flatpickr("#datepicker", {
+        dateFormat: "Y-m-d",
+        minDate: firstDay,
+        showMonths: 1, // Ensure only one month is shown
+        onChange: function(selectedDates, dateStr, instance) {
+            document.getElementById('depDt').value = dateStr;
+            // Set minimum return date to departure date
+            if (window.returnDatePicker) {
+                window.returnDatePicker.set('minDate', dateStr);
+            }
         }
+    });
+
+    initializeReturnDatePicker();
+
+    // Store references for later use
+    window.departureDatePicker = departureDate;
+}
 
         // Initialize date pickers when page loads
         document.addEventListener('DOMContentLoaded', function() {
@@ -624,6 +502,69 @@
             min-height: 100vh;
             padding: 20px 10px;
         }
+
+
+
+
+/* making form more compact  */
+
+/* Add to your form1.ejs or main CSS */
+.flight-form-container {
+  padding: 18px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  max-width: 420px;
+  margin: 0 auto;
+}
+.form-group {
+  margin-bottom: 12px;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+}
+label {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.btn-primary.btn-block {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+
+ /* button - and + */
+
+ /* Add to your form1.ejs or main CSS */
+.btn-incdec {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background: #106e00;
+  color: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+.btn-incdec:hover {
+  background: #0a3788;
+}
+.passengers-group input[type="text"] {
+  width: 48px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+
+
+
 
         .flight-form-container {
             max-width: 1200px;
