@@ -211,6 +211,8 @@
   </nav>
 
 
+<%- include('cruise-mobile-section') %>
+
 
     <div class="slider_homes" style="background: url(images/cruise/cruise-banner.jpg) left top no-repeat;
    height: auto;
@@ -247,7 +249,7 @@
       
 
 
-   <!-- <%- include('./cruise-form.ejs') %> -->
+   <!-- <%- include('./cruise-form.ejs') %>
 
 
 
@@ -2273,54 +2275,7 @@
             }
         }
     </style>
-
-    <div class="greatAirfarespopUp" id="boxes">
-        <button class="closePopup" onclick="closePopup()">
-            <i class="fa fa-times"></i>
-        </button>
-        <div class="gamainCover">
-            <div class="gamainPoup">
-                <!-- Your existing popup content -->
-                <div class="whole-banner-clickable">
-                    <a href="tel:(888) 453-6169
-" class="wholeClickable"></a>
-                    <div class="gAcontent">
-                        <h2>Airlines Reservations and Bookings</h2>
-                        <div class="airlinerLogo"><img id="utmpopupSmalllogo" src="images/Airline-Ticket.png"
-                                alt="Cheap"></div>
-                        <a href="tel:(888) 453-6169
-" class="svnSpt">24/7 Reservations & Support</a>
-                        <div class="usplst">
-                            <div>New Booking</div>
-                            <div>Changes</div>
-                            <div>Cancellation</div>
-                            <div>Customer Service</div>
-                            <a href="tel:(888) 453-6169
-" class="svnSpt">&nbsp;</a>
-                        </div>
-                        <div class="CruiseImage">
-                            <img id="utmpopuplogo" src="images/airline-gnric-pullu.png">
-                        </div>
-                        <div class="girlCalling1">
-                            <img src="images/calling-cus.png">
-                        </div>
-                        <p class="callTxt">No Hold - Call Answered in 5 Sec</p>
-                        <div class="callicons post">
-                            <a href="tel:(888) 453-6169
-" class="circlePhone"></a>
-                            <h4>
-                                <a href="tel:(888) 453-6169
-">(888) 453-6169
-</a>
-                            </h4>
-                        </div>
-                        <p class="pohlp"><a href="tel:(888) 453-6169
-">24/7 Helpline</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--  -->
 
 
     <script>
@@ -2616,7 +2571,7 @@
 
 
 
-    <header class="headers _headers callStringNew footerNumShow">
+    <!-- <header class="headers _headers callStringNew footerNumShow">
         <a href="tel:(888) 453-6169
 " class="fulclk">
             <span class="_call-num">(888) 453-6169
@@ -2645,7 +2600,7 @@
 
 
 
-    </header>
+    </header> -->
     
     <footer class="footer">
         <div class="container">
@@ -2738,151 +2693,3 @@
 </body>
 
 </html>
-
-<script>
-    //IIFE
-    (function () {
-        "use strict";
-
-        var canvas, ctx;
-        var points = [];
-        var maxDist = 100;
-
-        function init() {
-            //Add on load scripts
-            canvas = document.getElementById("canvas");
-            ctx = canvas.getContext("2d");
-            resizeCanvas();
-            generatePoints(700);
-            pointFun();
-            setInterval(pointFun, 25);
-            window.addEventListener("resize", resizeCanvas, false);
-        }
-        //Particle constructor
-        function point() {
-            this.x = Math.random() * (canvas.width + maxDist) - maxDist / 2;
-            this.y = Math.random() * (canvas.height + maxDist) - maxDist / 2;
-            this.z = Math.random() * 0.5 + 0.5;
-            this.vx = (Math.random() * 2 - 0.5) * this.z;
-            this.vy = (Math.random() * 1.5 + 1.5) * this.z;
-            this.fill = "rgba(255,255,255," + (0.5 * Math.random() + 0.5) + ")";
-            this.dia = (Math.random() * 2.5 + 1.5) * this.z;
-            points.push(this);
-        }
-        //Point generator
-        function generatePoints(amount) {
-            var temp;
-            for (var i = 0; i < amount; i++) {
-                temp = new point();
-            }
-            console.log(points);
-        }
-        //Point drawer
-        function draw(obj) {
-            ctx.beginPath();
-            ctx.strokeStyle = "transparent";
-            ctx.fillStyle = obj.fill;
-            ctx.arc(obj.x, obj.y, obj.dia, 0, 2 * Math.PI);
-            ctx.closePath();
-            ctx.stroke();
-            ctx.fill();
-        }
-        //Updates point position values
-        function update(obj) {
-            obj.x += obj.vx;
-            obj.y += obj.vy;
-            if (obj.x > canvas.width + maxDist / 2) {
-                obj.x = -(maxDist / 2);
-            } else if (obj.xpos < -(maxDist / 2)) {
-                obj.x = canvas.width + maxDist / 2;
-            }
-            if (obj.y > canvas.height + maxDist / 2) {
-                obj.y = -(maxDist / 2);
-            } else if (obj.y < -(maxDist / 2)) {
-                obj.y = canvas.height + maxDist / 2;
-            }
-        }
-        //
-        function pointFun() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (var i = 0; i < points.length; i++) {
-                draw(points[i]);
-                update(points[i]);
-            }
-        }
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            pointFun();
-        }
-
-        //Execute when DOM has loaded
-        document.addEventListener("DOMContentLoaded", init, false);
-    })();
-</script>
-
-<style>
-    .closePopup {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: transparent;
-        color: #0a3788;
-        /* Match your UI color */
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 20;
-    }
-
-    .closePopup i {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .closePopup:hover {
-        color: #f00;
-        /* Optional hover effect */
-    }
-</style>
-
-<script>
-    function closePopup() {
-        var popup = document.getElementById("boxes");
-        popup.style.display = "none";
-    }
-</script>
-
-
-<script>
-    // Function to check if the user is on a mobile device
-    function isMobileDevice() {
-        return window.innerWidth <= 767; // Adjust breakpoint as needed
-    }
-
-
-    //  Function to show the popup after 15 seconds on mobile devices
-    function showPopupAfterDelay() {
-        if (isMobileDevice()) {
-            setTimeout(function () {
-                var popup = document.getElementById("boxes");
-                if (popup) {
-                    popup.style.display = "block";
-                }
-            }, 10000); // 15 seconds delay
-        }
-    }
-
-
-
-    // Call the function on page load
-    document.addEventListener("DOMContentLoaded", showPopupAfterDelay);
-</script>
-
-<style>
-    #boxes {
-        display: none;
-        /* Initially hide the popup */
-    }
-</style>
